@@ -16,13 +16,13 @@ import java.io.FileInputStream;
 public class HadoopUtil {
     public static void main(String[] args) throws Exception{
        Configuration configuration=new Configuration();
-       configuration.set("fs.defaultFS","hdfs://Huaren6:9000");
+       configuration.set("fs.default.name","hdfs://Huaren6:9000/");
         System.out.println(configuration);
         FileSystem fileSystem=FileSystem.get(configuration);
         Path path= new Path("hdfs://Huaren6:9000/haha.txt");
-        //FSDataOutputStream outputStream=fileSystem.create(path);
-        /*FileInputStream inputStream= new FileInputStream("D:/qingshu.txt");
-        IOUtils.copy(inputStream, outputStream);*/
+        FSDataOutputStream outputStream=fileSystem.create(path);
+        FileInputStream inputStream= new FileInputStream("D:/qingshu.txt");
+        IOUtils.copy(inputStream, outputStream);
 
     }
 }
